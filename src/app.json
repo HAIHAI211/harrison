@@ -1,0 +1,16 @@
+{
+  "pages": [
+    "pages/index/main",
+    "pages/article/main",
+    "pages/msg/main",
+    "pages/article/detail/main"
+  ],
+  "window": {
+    "backgroundTextStyle": "bolder",
+    "navigationBarBackgroundColor": "#fbfbff",
+    "backgroundColor": "#fbfbff",
+    "navigationBarTitleText": "孙正 · Harrison",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  }
+}
