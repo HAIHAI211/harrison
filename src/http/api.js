@@ -40,6 +40,6 @@ export const login = params => {
 // 获取首页的自我介绍信息
 export const fetchSelfIntroduce = () => {
   return get({
-    url: '/football/index/introduce'
+    url: '/index/getInfo'
   })
 }
