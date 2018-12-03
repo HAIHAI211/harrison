@@ -77,10 +77,11 @@ export async function openOnline (fileUrl) {
 }
 
 // 拷贝
-export function copy (str) {
-  return pf('setClipboardData', {
+export async function copy (str) {
+  await pf('setClipboardData', {
     data: str
   })
+  showToast('复制成功', 800)
 }
 
 // 加载中
@@ -107,4 +108,21 @@ export const showError = (msg, duration = 500) => {
     icon: 'none',
     duration: duration
   })
+}
+
+export async function auth (scope) {
+  const scopeName = scope
+  const getSettingRes = await pf('getSetting')
+  if (!getSettingRes.authSetting[scopeName]) {
+    try {
+      await pf('authorize', {scope: scopeName})
+      // console.log('申请授权werun，然后用户同意')
+      return true
+    } catch (e) {
+      // console.log('申请授权werun，但是用户拒绝了')
+      return false
+    }
+  }
+  // console.log('已经授权werun')
+  return true
 }

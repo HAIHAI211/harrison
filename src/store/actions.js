@@ -1,7 +1,6 @@
 import * as types from './mutation-types'
-import {pf} from '@/utils'
+import {pf, auth} from '@/utils'
 import * as api from '@/http/api'
-import auths from '@/utils/auths'
 
 async function reLogin (commit) {
   try {
@@ -53,40 +52,12 @@ const actions = {
     }
   },
   async AUTH_OF_WERUN ({commit}) {
-    const isAuthOfWerun = await auths.auth('scope.werun')
+    const isAuthOfWerun = await auth('scope.werun')
     commit(types.SET_AUTH_WE_RUN, isAuthOfWerun)
   },
   async AUTH_OF_USER_INFO ({commit}) {
-    const isAuthOfUI = await auths.auth('scope.userInfo')
+    const isAuthOfUI = await auth('scope.userInfo')
     commit(types.SET_AUTH_USER_INFO, isAuthOfUI)
-  },
-  async REPORT_OF_WERUN ({commit, state}) {
-    if (state.isLogin && state.openId && state.authWerun) {
-      console.log('【可以获取步数了哦哦哦哦】')
-      const {encryptedData, iv} = await pf('getWeRunData')
-      console.log('ed', encryptedData)
-      console.log('iv', iv)
-      await api.decrypt({
-        encryptedData,
-        iv,
-        openId: state.openId,
-        type: 'step'
-      })
-      return true
-    }
-    // console.log('未达到步数上报条件')
-    return false // 上传失败
-  },
-  async FETCH_USER_INFO ({commit, state}) {
-    if (state.isLogin && state.openId) {
-      const result = await api.getUserInfo({ openId: state.openId })
-      commit(types.SET_USER_INFO, result.data)
-    }
-  },
-  async FETCH_ADVS ({commit}) {
-    const result = await api.getAdvs()
-    commit(types.SET_ADVS, result.data)
-    return result.data
   }
 }
 export default actions

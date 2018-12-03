@@ -30,7 +30,7 @@ export default {
         avatar: '',
         title: '',
         subTitle: '',
-        content: ' '
+        content: ''
       }
     }
   },
@@ -50,7 +50,7 @@ export default {
       // do something
       const data = href.substr(7)
       console.log(data)
-      this.copy(data)
+      this.utils.copy(data)
     },
     async getIntroducesByFly () {
       const result = await fetchSelfIntroduce()
@@ -58,20 +58,6 @@ export default {
         this.introduce = result
       }
       console.log(result)
-    },
-    copy (data) {
-      wx.setClipboardData({
-        data: data,
-        success (res) {
-          wx.getClipboardData({
-            success (res) {
-              wx.showToast({
-                title: '复制成功'
-              })
-            }
-          })
-        }
-      })
     }
   }
 }
