@@ -34,13 +34,14 @@ export default {
       }
     }
   },
-  onPullDownRefresh () {
+  async onPullDownRefresh () {
+    await this._getIntroducesByFly()
     wx.stopPullDownRefresh()
   },
   onReachBottom () {
   },
   mounted () {
-    this.getIntroducesByFly()
+    this._getIntroducesByFly()
   },
   methods: {
     preview (src, e) {
@@ -52,7 +53,7 @@ export default {
       console.log(data)
       this.utils.copy(data)
     },
-    async getIntroducesByFly () {
+    async _getIntroducesByFly () {
       const result = await fetchSelfIntroduce()
       if (result) {
         this.introduce = result
