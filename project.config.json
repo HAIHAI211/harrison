@@ -7,7 +7,7 @@
 		"minified": true,
 		"newFeature": true
 	},
-	"miniprogramRoot": "./dist/",
+	"miniprogramRoot": "dist/",
 	"compileType": "miniprogram",
 	"appid": "wx93f7bfc4a884208a",
 	"projectname": "harrison",
