@@ -43,3 +43,10 @@ export const fetchSelfIntroduce = () => {
     url: '/index/getInfo'
   })
 }
+
+export const fetchArticles = (params) => {
+  return get({
+    url: '/article/get',
+    data: params
+  })
+}

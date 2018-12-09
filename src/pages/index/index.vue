@@ -18,7 +18,6 @@
 <script>
 import TabBar from '@/components/tab-bar'
 import wxParse from 'mpvue-wxparse'
-import { fetchSelfIntroduce } from '@/http/api'
 export default {
   components: {
     wxParse,
@@ -54,7 +53,7 @@ export default {
       this.utils.copy(data)
     },
     async _getIntroducesByFly () {
-      const result = await fetchSelfIntroduce()
+      const result = await this.api.fetchSelfIntroduce()
       if (result) {
         this.introduce = result
       }
