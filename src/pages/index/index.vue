@@ -50,7 +50,7 @@ export default {
     navigate (href, e) {
       // do something
       const data = href.substr(7)
-      console.log(data)
+      console.log(href)
       this.utils.copy(data)
     },
     async _getIntroducesByFly () {

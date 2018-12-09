@@ -42,10 +42,7 @@ fly.interceptors.response.use(
     return response.data
   },
   (er) => {
-    wx.hideLoading()
-    // 发生网络错误后会走到这里
     console.log('错误', er)
-
     // 请求出错，根据返回状态码判断出错原因
     wx.hideLoading()
     let errMsg = ''
