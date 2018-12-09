@@ -46,7 +46,7 @@ export const mixinPullToRefresh = {
       pageIndex: 0,
       apis: [],
       initPageNum: 0, // pageNum的初始页码
-      listKeyName: 'list',
+      listKeyName: 'data',
       pageCountKeyName: 'pageCount'
     }
   },
